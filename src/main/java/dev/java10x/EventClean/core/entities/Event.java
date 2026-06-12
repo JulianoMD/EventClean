@@ -11,7 +11,8 @@ public record Event(
                     String identification,
                     LocalDateTime dataStart,
                     LocalDateTime dataEnd,
-                    String place,
+                    String venue,
+                    int capacity,
                     String organizer,
                     TypeEvent type
 ) {}
