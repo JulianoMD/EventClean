@@ -13,6 +13,7 @@ public record Event(
                     LocalDateTime dataEnd,
                     String venue,
                     int capacity,
+                    String sponsor,
                     String organizer,
                     TypeEvent type
 ) {}
