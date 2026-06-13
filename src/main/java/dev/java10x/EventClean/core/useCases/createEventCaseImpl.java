@@ -2,7 +2,7 @@ package dev.java10x.EventClean.core.useCases;
 
 import dev.java10x.EventClean.core.entities.Event;
 
-public class createEventCaseImpl implements createEventCase {
+public class CreateEventCaseImpl implements CreateEventCase {
 
     @Override
     public Event execute(Event event) {
