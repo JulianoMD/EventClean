@@ -1,12 +1,19 @@
 package dev.java10x.EventClean.core.useCases;
 
 import dev.java10x.EventClean.core.entities.Event;
+import dev.java10x.EventClean.core.gateway.EventGateway;
 
 public class CreateEventCaseImpl implements CreateEventCase {
 
+    private final EventGateway eventGateway;
+
+    public CreateEventCaseImpl(EventGateway eventGateway) {
+        this.eventGateway = eventGateway;
+    }
+
     @Override
     public Event execute(Event event) {
-        return null;
+        return eventGateway.createEvent(event);
     }
 
 }
