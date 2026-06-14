@@ -2,8 +2,10 @@ package dev.java10x.EventClean.core.useCases;
 
 import dev.java10x.EventClean.core.entities.Event;
 
-public interface CreateEventCase {
+import java.util.List;
 
-    public Event execute(Event event);
+public interface SearchEventUsecase {
+
+    public List<Event> execute();
 
 }

@@ -1,29 +1,13 @@
 package dev.java10x.EventClean.infra.mapper;
 
 import dev.java10x.EventClean.core.entities.Event;
-import dev.java10x.EventClean.core.enuns.TypeEvent;
 import dev.java10x.EventClean.infra.persistense.EventEntity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
 @Component
 public class EventEntityMapper {
-
-   /*     private Long id;
-    private String name;
-    private String description;
-    private String identification;
-    private LocalDateTime dataStart;
-    private LocalDateTime dataEnd;
-    private String venue;
-    private int capacity;
-    private String organizer;
-    private String sponsor;
-    @Enumerated(EnumType.STRING)
-    private TypeEvent type;*/
 
     public EventEntity toEntity(Event event) {
         return new EventEntity(

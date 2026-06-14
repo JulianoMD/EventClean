@@ -3,11 +3,11 @@ package dev.java10x.EventClean.core.useCases;
 import dev.java10x.EventClean.core.entities.Event;
 import dev.java10x.EventClean.core.gateway.EventGateway;
 
-public class CreateEventCaseImpl implements CreateEventCase {
+public class CreateEventUsecaseImpl implements CreateEventUsecase {
 
     private final EventGateway eventGateway;
 
-    public CreateEventCaseImpl(EventGateway eventGateway) {
+    public CreateEventUsecaseImpl(EventGateway eventGateway) {
         this.eventGateway = eventGateway;
     }
 

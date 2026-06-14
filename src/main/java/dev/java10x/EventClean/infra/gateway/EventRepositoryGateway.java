@@ -15,18 +15,18 @@ import java.util.List;
 public class EventRepositoryGateway implements EventGateway {
 
     private final EventRepository eventRepository;
-    private final EventEntityMapper eventEntityMapper;
+    private final EventEntityMapper mapper;
 
     @Override
     public Event createEvent(Event event) {
-        EventEntity entity = eventRepository.save(eventEntityMapper.toEntity(event));
-        return eventEntityMapper.toDomain(entity);
+        EventEntity entity = eventRepository.save(mapper.toEntity(event));
+        return mapper.toDomain(entity);
     }
 
     @Override
     public List<Event> searchEvents() {
         List<Event> listEvent = eventRepository.findAll().stream()
-                .map(eventEntityMapper::toDomain)
+                .map(mapper::toDomain)
                 .toList();
         return listEvent;
     }

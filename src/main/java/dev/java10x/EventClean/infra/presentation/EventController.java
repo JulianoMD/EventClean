@@ -1,8 +1,8 @@
 package dev.java10x.EventClean.infra.presentation;
 
 import dev.java10x.EventClean.core.entities.Event;
-import dev.java10x.EventClean.core.useCases.CreateEventCase;
-import dev.java10x.EventClean.core.useCases.SearchEventCase;
+import dev.java10x.EventClean.core.useCases.CreateEventUsecase;
+import dev.java10x.EventClean.core.useCases.SearchEventUsecase;
 import dev.java10x.EventClean.infra.dtos.EventDto;
 import dev.java10x.EventClean.infra.mapper.EventDtoMapper;
 import org.springframework.web.bind.annotation.*;
@@ -13,26 +13,26 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class EventController {
 
-    private final EventDtoMapper eventDtoMapper;
-    private final CreateEventCase createEventCase;
-    private final SearchEventCase searchEventCase;
+    private final EventDtoMapper mapper;
+    private final CreateEventUsecase createEventUsecase;
+    private final SearchEventUsecase searchEventUsecase;
 
-    public EventController(EventDtoMapper eventDtoMapper, CreateEventCase createEventCase, SearchEventCase searchEventCase) {
-        this.eventDtoMapper = eventDtoMapper;
-        this.createEventCase = createEventCase;
-        this.searchEventCase = searchEventCase;
+    public EventController(EventDtoMapper mapper, CreateEventUsecase createEventUsecase, SearchEventUsecase searchEventUsecase) {
+        this.mapper = mapper;
+        this.createEventUsecase = createEventUsecase;
+        this.searchEventUsecase = searchEventUsecase;
     }
 
     @PostMapping("createevent")
     public EventDto createEvent(@RequestBody EventDto eventDto) {
-        Event newEvent = createEventCase.execute(eventDtoMapper.toDomain(eventDto));
-        return eventDtoMapper.toDto(newEvent);
+        Event newEvent = createEventUsecase.execute(mapper.toDomain(eventDto));
+        return mapper.toDto(newEvent);
     }
 
     @GetMapping("searchevent")
     public List<EventDto> listEvents() {
-        return searchEventCase.execute().stream()
-                .map(eventDtoMapper::toDto)
+        return searchEventUsecase.execute().stream()
+                .map(mapper::toDto)
                 .toList();
 
     }
