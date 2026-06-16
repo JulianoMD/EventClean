@@ -30,4 +30,10 @@ public class EventRepositoryGateway implements EventGateway {
                 .toList();
         return listEvent;
     }
+
+    @Override
+    public boolean existsByIdentification(String identification) {
+        return eventRepository.findAll().stream()
+                .anyMatch(event -> event.getIdentification().equalsIgnoreCase(identification));
+    }
 }

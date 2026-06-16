@@ -2,6 +2,7 @@ package dev.java10x.EventClean.core.useCases;
 
 import dev.java10x.EventClean.core.entities.Event;
 import dev.java10x.EventClean.core.gateway.EventGateway;
+import dev.java10x.EventClean.core.exceptions.DuplicateEventException;
 
 public class CreateEventUsecaseImpl implements CreateEventUsecase {
 
@@ -13,6 +14,9 @@ public class CreateEventUsecaseImpl implements CreateEventUsecase {
 
     @Override
     public Event execute(Event event) {
+        if(eventGateway.existsByIdentification(event.identification())){
+            throw new DuplicateEventException("Event with identifier " + event.identification() + " already in use in another event called: " + event.name());
+        }
         return eventGateway.createEvent(event);
     }
 
